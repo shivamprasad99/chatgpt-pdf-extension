@@ -1,4 +1,3 @@
-// document.body.style.backgroundColor = "orange";
 (async () => {
     // const module = await import('./module.js');
     console.log("initializing extension");
@@ -33,22 +32,7 @@
                 downloadButton.innerText = "Download PDF";
                 downloadButton.onclick = () => {
                     var divContents = document.getElementById("__next").innerHTML;
-                    var printWindow = window.open('', '', 'height=400,width=800');
-                    printWindow.document.write('<html><head><title>DIV Contents</title>');
-                    printWindow.document.write('</head><body >');
-                    printWindow.document.write(divContents);
-                    printWindow.document.write('</body></html>');
-                    var rmElems = printWindow.document.querySelectorAll("button");
-                    var rm_array = [...rmElems]; // converts NodeList to Array
-                    rm_array.forEach(div => {
-                        div.parentNode.removeChild(div);
-                    });
-                    var nlElems = printWindow.document.querySelectorAll("div>span>span")
-                    setTimeout (() => {
-                        printWindow.document.close();
-                        printWindow.print();
-                        printWindow.close();
-                    },200);
+                    printChat(divContents);
                 }
                 actionsArea.appendChild(downloadButton);
             }
@@ -72,6 +56,24 @@
     }
     );
 
-// Use the module here
+    function printChat(divContents) {
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        var rmElems = printWindow.document.querySelectorAll("button");
+        var rm_array = [...rmElems]; // converts NodeList to Array
+        rm_array.forEach(div => {
+            div.parentNode.removeChild(div);
+        });
+        var nlElems = printWindow.document.querySelectorAll("div>span>span")
+        setTimeout (() => {
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        },200);
+    }
+
 })();
 

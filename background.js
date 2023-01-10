@@ -13,27 +13,3 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     }
     console.log(changeInfo);
 });
-  
-
-// receiving a message
-// chrome.runtime.onMessage.addListener(
-//     function(request, sender, sendResponse) {
-//         console.log(sender.tab ? 
-//             "from content script:" + request.greeting + sender.tab.url:
-//             "from the extension");
-//         console.log(request.body);
-//         if(request.greeting === "hello") {
-            
-//             sendResponse({farewell: "fuckoff"});
-//         }
-//     }
-// )
-// chrome.runtime.onMessage.addListener(
-//     function(request, sender, sendResponse) {
-//         console.log(sender.tab ? 
-//             "from content script:" + sender.tab.url:
-//             "from the extension");
-//         if(request.greeting === "hello") 
-//             sendResponse({farewell: "fuckoff"});
-//     }
-// )

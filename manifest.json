@@ -14,9 +14,7 @@
         {
             "matches": ["https://chat.openai.com/*"],
             "js": [
-                "content.js",
-                "html2canvas.min.js",
-                "jspdf.umd.min.js"
+                "content.js"
             ]
         }
     ]

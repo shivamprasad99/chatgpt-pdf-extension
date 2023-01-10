@@ -1,1 +1,2 @@
-# This is a simple chrome extension to add a download as pdf button to ChatGPT to save your conversations.
+# ChatGPT pdf download extension
+This browser extension adds a Download PDF button at the bottom ChatGPT chat page, allowing you to save and share your conversation easily.
