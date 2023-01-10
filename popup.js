@@ -1,8 +1,9 @@
-/*
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("button1").addEventListener("click", () => {
-        // sending a message
-        var body = document.getElementsByTagName("body")[0].style.backgroundColor = "aqua";
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {message: "Hello from the popup!"});
+          });
     });
 });
-*/
+

@@ -31,8 +31,7 @@
                 downloadButton.setAttribute("share-ext", "true");
                 downloadButton.innerText = "Download PDF";
                 downloadButton.onclick = () => {
-                    var divContents = document.getElementById("__next").innerHTML;
-                    printChat(divContents);
+                    printChat();
                 }
                 actionsArea.appendChild(downloadButton);
             }
@@ -46,17 +45,22 @@
     }
 
     chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.message === 'Hello from the background script') {
-        console.log('Received message from the background script');
-        isButtonAdded = false;
-        init();
-        sendResponse({ message: 'Hello from the content script' });  // Send a response back to the background script
+        function(request, sender, sendResponse) {
+            if (request.message === 'Hello from the background script') {
+                console.log('Received message from the background script');
+                isButtonAdded = false;
+                init();
+                sendResponse({ message: 'Hello from the content script' });  // Send a response back to the background script
+            }     
+            if (request.message === "Hello from the popup!") {
+                console.log('Received message from the popup script');
+                printChat();
+            }
         }
-    }
     );
 
-    function printChat(divContents) {
+    function printChat() {
+        var divContents = document.getElementById("__next").innerHTML;
         var printWindow = window.open('', '', 'height=400,width=800');
         printWindow.document.write('<html><head><title>DIV Contents</title>');
         printWindow.document.write('</head><body >');
