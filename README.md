@@ -1,0 +1,1 @@
+# This is a simple chrome extension to add a download as pdf button to ChatGPT to save your conversations.

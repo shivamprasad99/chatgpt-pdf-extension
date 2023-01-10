@@ -1,0 +1,23 @@
+{
+    "name": "ChatGPT PDF downloader",
+    "description": "Extension to save you chats",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["storage", "activeTab"],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://chat.openai.com/*"],
+            "js": [
+                "content.js",
+                "html2canvas.min.js",
+                "jspdf.umd.min.js"
+            ]
+        }
+    ]
+}
